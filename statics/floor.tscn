@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://o1ovbiydb0xv"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cagwr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jb0fy"]
+noise_type = 0
+fractal_lacunarity = 4.0
+fractal_gain = 2.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdrt6"]
+seamless = true
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource("FastNoiseLite_jb0fy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5wsr"]
+albedo_color = Color(0.243137, 0.101961, 0.0470588, 1)
+albedo_texture = SubResource("NoiseTexture2D_pdrt6")
+
+[node name="Ground" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_cagwr")
+surface_material_override/0 = SubResource("StandardMaterial3D_o5wsr")

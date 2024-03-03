@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c86a6g31orvyx"]
+
+[ext_resource type="Script" path="res://levels/waypoint.gd" id="1_bkvfi"]
+
+[node name="WayPoint" type="Marker3D"]
+script = ExtResource("1_bkvfi")

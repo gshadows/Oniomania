@@ -1,0 +1,351 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpyue60272pci"]
+
+[ext_resource type="Script" path="res://levels/game_manager.gd" id="1_5geff"]
+[ext_resource type="Script" path="res://levels/camera_control.gd" id="2_7h737"]
+[ext_resource type="PackedScene" uid="uid://d2v2kma6lyb52" path="res://statics/ground.tscn" id="3_87ccb"]
+[ext_resource type="PackedScene" uid="uid://o1ovbiydb0xv" path="res://statics/floor.tscn" id="4_s67bf"]
+[ext_resource type="PackedScene" uid="uid://dlu6d8j35ia22" path="res://objects/player/player.tscn" id="5_0l803"]
+[ext_resource type="PackedScene" uid="uid://c86a6g31orvyx" path="res://levels/waypoint.tscn" id="6_5d2r2"]
+[ext_resource type="PackedScene" uid="uid://dn7oqjnwknkvm" path="res://objects/wife/wife.tscn" id="6_v7ng2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6oqfo"]
+size = Vector3(6, 2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_up5ll"]
+size = Vector3(0.2, 2, 2.5)
+
+[sub_resource type="Environment" id="Environment_fbhdu"]
+background_mode = 1
+background_color = Color(0.17208, 0.126059, 0.0554233, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.454902, 0.454902, 0.454902, 1)
+ambient_light_energy = 4.13
+reflected_light_source = 1
+tonemap_exposure = 1.44
+
+[node name="Level01" type="Node3D"]
+script = ExtResource("1_5geff")
+
+[node name="CameraControl" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 7, 3.515)
+script = ExtResource("2_7h737")
+
+[node name="Camera3D" type="Camera3D" parent="CameraControl"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+current = true
+
+[node name="Statics" type="Node" parent="."]
+
+[node name="Ground" type="Node" parent="Statics"]
+
+[node name="Ground01" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground02" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground03" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground04" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground05" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground06" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground07" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground08" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground09" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground10" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground11" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Ground12" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Ground13" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+skeleton = NodePath("../../..")
+
+[node name="Ground22" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground23" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground24" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Ground25" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Ground26" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+skeleton = NodePath("../../..")
+
+[node name="Ground14" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+skeleton = NodePath("../../..")
+
+[node name="Ground15" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Ground16" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Ground17" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground18" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground19" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+skeleton = NodePath("../../..")
+
+[node name="Ground20" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Ground21" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="Ground27" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+skeleton = NodePath("../../..")
+
+[node name="Ground28" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
+skeleton = NodePath("../../..")
+
+[node name="Ground29" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+skeleton = NodePath("../../..")
+
+[node name="Ground30" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+skeleton = NodePath("../../..")
+
+[node name="Ground31" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+skeleton = NodePath("../../..")
+
+[node name="HouseFloor" type="Node" parent="Statics"]
+
+[node name="Ground" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+
+[node name="Ground2" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Ground3" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Ground4" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Ground5" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="Ground6" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Ground7" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Ground8" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="Ground9" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="House" type="Node" parent="Statics"]
+
+[node name="Wall1" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+mesh = SubResource("BoxMesh_6oqfo")
+
+[node name="Wall2" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+mesh = SubResource("BoxMesh_6oqfo")
+
+[node name="Wall3" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1.84564)
+mesh = SubResource("BoxMesh_up5ll")
+
+[node name="Wall4" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 1.84308)
+mesh = SubResource("BoxMesh_up5ll")
+
+[node name="Wall5" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00441, 1, -1.84564)
+mesh = SubResource("BoxMesh_up5ll")
+
+[node name="Wall6" type="MeshInstance3D" parent="Statics/House"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00441, 1, 1.84308)
+mesh = SubResource("BoxMesh_up5ll")
+
+[node name="WayPoints" type="Node" parent="."]
+
+[node name="WP-RoomCenter" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85418, 0, 0)
+to_computer = NodePath("../WP-RoomComp")
+to_closet = NodePath("../WP-RoomCloset")
+to_entrance = NodePath("../WP-EntranceO")
+to_shop = NodePath("../WP-EntranceO")
+to_garbage = NodePath("../WP-Garbage")
+
+[node name="WP-RoomComp" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70281, 0, -1.38148)
+to_computer = NodePath("../WP-Computer")
+to_closet = NodePath("../WP-RoomCenter")
+to_entrance = NodePath("../WP-RoomCenter")
+to_shop = NodePath("../WP-RoomCenter")
+to_garbage = NodePath("../WP-Garbage")
+
+[node name="WP-RoomCloset" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30229, 2.38419e-07, 1.67233)
+to_computer = NodePath("../WP-RoomCenter")
+to_closet = NodePath("../WP-Closet")
+to_entrance = NodePath("../WP-RoomCenter")
+to_shop = NodePath("../WP-RoomCenter")
+to_garbage = NodePath("../WP-Garbage")
+
+[node name="WP-Garbage" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15796, 0, 0)
+point_type = 6
+to_computer = NodePath("../WP-Computer")
+to_closet = NodePath("../WP-Closet")
+to_entrance = NodePath("../WP-EntranceO")
+to_shop = NodePath("../WP-EntranceO")
+to_garbage = NodePath(".")
+wait_here_sec = 1.0
+
+[node name="WP-EntranceO" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61368, 0, 0)
+point_type = 4
+to_computer = NodePath("../WP-RoomComp")
+to_closet = NodePath("../WP-RoomComp")
+to_entrance = NodePath(".")
+to_shop = NodePath("../WP-EntranceI")
+to_garbage = NodePath("../WP-RoomComp")
+wait_here_sec = 1.0
+
+[node name="WP-EntranceI" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46919, 0, 0)
+point_type = 4
+to_computer = NodePath("../WP-EntranceO")
+to_closet = NodePath("../WP-EntranceO")
+to_entrance = NodePath("../WP-EntranceO")
+to_shop = NodePath("../WP-RoadHO")
+to_garbage = NodePath("../WP-EntranceO")
+wait_here_sec = 1.0
+
+[node name="WP-Computer" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28191, 0, -2.22838)
+point_type = 2
+to_computer = NodePath(".")
+to_closet = NodePath("../WP-RoomCenter")
+to_entrance = NodePath("../WP-RoomCenter")
+to_shop = NodePath("../WP-RoomCenter")
+to_garbage = NodePath("../WP-RoomCenter")
+wait_here_sec = 5.0
+
+[node name="WP-Closet" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12532, 0, 2.48561)
+point_type = 3
+to_computer = NodePath("../WP-RoomCenter")
+to_closet = NodePath(".")
+to_entrance = NodePath("../WP-RoomCenter")
+to_shop = NodePath("../WP-RoomCenter")
+to_garbage = NodePath("../WP-RoomCenter")
+wait_here_sec = 3.0
+
+[node name="WP-RoadHO" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7941, 0, 0)
+to_computer = NodePath("../WP-EntranceI")
+to_closet = NodePath("../WP-EntranceI")
+to_entrance = NodePath("../WP-EntranceI")
+to_shop = NodePath("../WP-RoadSI")
+to_garbage = NodePath("../WP-EntranceI")
+wait_here_sec = 2.0
+
+[node name="WP-RoadHI" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7941, 0, 0)
+to_computer = NodePath("../WP-EntranceI")
+to_closet = NodePath("../WP-EntranceI")
+to_entrance = NodePath("../WP-EntranceI")
+to_shop = NodePath("../WP-RoadHO")
+to_garbage = NodePath("../WP-EntranceI")
+
+[node name="WP-RoadSO" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29285, 0, 0)
+to_computer = NodePath("../WP-RoadHI")
+to_closet = NodePath("../WP-RoadHI")
+to_entrance = NodePath("../WP-RoadHI")
+to_shop = NodePath("../WP-Shop")
+to_garbage = NodePath("../WP-RoadHI")
+wait_here_sec = 2.0
+
+[node name="WP-RoadSI" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29285, 0, 0)
+to_computer = NodePath("../WP-RoadSO")
+to_closet = NodePath("../WP-RoadSO")
+to_entrance = NodePath("../WP-RoadSO")
+to_shop = NodePath("../WP-Shop")
+to_garbage = NodePath("../WP-RoadSO")
+
+[node name="WP-Shop" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8561, 0, -1.41688)
+point_type = 5
+to_computer = NodePath("../WP-RoadHO")
+to_closet = NodePath("../WP-RoadHO")
+to_entrance = NodePath("../WP-RoadHO")
+to_garbage = NodePath("../WP-RoadHO")
+wait_here_sec = 5.0
+
+[node name="Player" parent="." instance=ExtResource("5_0l803")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50057, 0, 0)
+
+[node name="Wife" parent="." node_paths=PackedStringArray("waypoint") instance=ExtResource("6_v7ng2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6986, 0, 0)
+waypoint = NodePath("../WayPoints/WP-EntranceI")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.611527, -0.536576, 0.581482, 0, 0.734915, 0.67816, -0.791224, 0.414713, -0.44942, 0, 0, 0)
+light_color = Color(1, 1, 0.533333, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fbhdu")
