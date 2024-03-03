@@ -37,13 +37,12 @@ mesh = SubResource("BoxMesh_drmfi")
 surface_material_override/0 = SubResource("StandardMaterial3D_hlhih")
 
 [node name="MeshGoods" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03358, 0.52266)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 visible = false
 mesh = SubResource("BoxMesh_dh24m")
 surface_material_override/0 = SubResource("StandardMaterial3D_itx2t")
 
 [node name="MeshGargabe" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03358, 0.52266)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 mesh = SubResource("BoxMesh_qj7gi")
 surface_material_override/0 = SubResource("StandardMaterial3D_y7o1k")

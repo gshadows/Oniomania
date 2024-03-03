@@ -19,7 +19,7 @@ enum State { SHOPPING, PICKING_UP, RECEIVING, STORING, LITTERING }
 @export var wait_time := GAME_START_WAIT_SEC
 
 var courier_arrived := false
-var difficulty_modifier := 1.0 # Updated by the GameManager
+var difficulty_modifier := 5.0 # Updated by the GameManager
 
 
 func _process(delta: float) -> void:
@@ -29,14 +29,14 @@ func _process(delta: float) -> void:
 			_do_after_delay()
 		return
 	var dir := waypoint.global_position - global_position
-	var speed := delta * WALKING_SPEED * difficulty_modifier
-	if dir.length_squared() < minf(ARRIVAL_DISTANCE_SQUARED, speed * speed):
+	var move_dist := delta * WALKING_SPEED * difficulty_modifier
+	if dir.length_squared() < maxf(ARRIVAL_DISTANCE_SQUARED, move_dist * move_dist):
 		# Arrived
 		global_position = waypoint.global_position
 		_do_waypoint_actions()
 	else:
 		# Walk to waypoint
-		global_position += dir.normalized() * speed
+		global_position += dir.normalized() * move_dist
 		# TODO: Walk animation
 
 
@@ -144,6 +144,7 @@ func _drop_garbage() -> void:
 func _switch_waypoint(next_point:WayPoint) -> void:
 	print_verbose("Wife: Path %s (%s) -> %s (%s)" % [waypoint.name, waypoint.get_type_name(), next_point.name, next_point.get_type_name()])
 	waypoint = next_point
+	look_at(waypoint.global_position)
 
 func _switch_state(new_state:State) -> void:
 	print_verbose("Wife: ", stname(state), " -> ", stname(new_state))
@@ -157,7 +158,3 @@ func stname(st:State) -> String:
 		State.STORING:		return "STORING"
 		State.LITTERING:	return "LITTERING"
 		_: return str(st)
-
-
-func _coin() -> bool:
-	return randi() % 100 > 50
