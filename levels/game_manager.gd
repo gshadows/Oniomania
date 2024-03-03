@@ -1,7 +1,19 @@
-extends Node3D
+class_name GameManager extends Node3D
 
-#func _ready():
-#	pass # Replace with function body.
+@export var wife: Wife
+@export var player: Player
+#@export var neighboar: Neighboar
+@export var garbage_manager: GarbageManager
 
-#func _process(delta):
-#	pass
+
+func _ready() -> void:
+	if OS.is_debug_build() and (DisplayServer.get_screen_count() > 1):
+		#DisplayServer.window_set_current_screen(DisplayServer.window_get_current_screen() ^ 1)
+		DisplayServer.window_set_current_screen(DisplayServer.get_screen_count() - 1)
+		#DisplayServer.window_set_current_screen(1)
+		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+func set_difficulty_modifier(modifier: float) -> void:
+	wife.difficulty_modifier = modifier
+	garbage_manager.difficulty_modifier = modifier

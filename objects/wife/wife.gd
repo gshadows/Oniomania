@@ -1,4 +1,7 @@
-extends Node3D
+class_name Wife extends Node3D
+
+signal drop_garbage(pos:Vector3)
+signal need_garbage_place
 
 const ARRIVAL_DISTANCE_SQUARED := 0.001
 const WALKING_SPEED := 2.0
@@ -12,10 +15,11 @@ const GAME_START_WAIT_SEC := 1.0
 @onready var mesh_garbage: MeshInstance3D = $MeshGargabe
 
 enum State { SHOPPING, PICKING_UP, RECEIVING, STORING, LITTERING }
-var state := State.SHOPPING
-var wait_time := GAME_START_WAIT_SEC
+@export var state := State.SHOPPING
+@export var wait_time := GAME_START_WAIT_SEC
+
 var courier_arrived := false
-var difficulty_modifier := 1.0
+var difficulty_modifier := 1.0 # Updated by the GameManager
 
 
 func _process(delta: float) -> void:
@@ -38,7 +42,7 @@ func _process(delta: float) -> void:
 
 func _do_waypoint_actions() -> void:
 	print_verbose("Wife: At state %s arrived to %s (%s) and will wait %.2f sec" % [stname(state), waypoint.name, waypoint.get_type_name(), waypoint.wait_here_sec])
-	wait_time = waypoint.wait_here_sec
+	wait_time = waypoint.wait_here_sec / difficulty_modifier
 	waypoint.arrived.emit()
 
 	match waypoint.point_type:
@@ -66,6 +70,7 @@ func _do_waypoint_actions() -> void:
 			# Arrived to empty garbage slot. Drop garbage and go shopping again :)
 			_drop_garbage()
 			mesh_garbage.visible = false
+			waypoint.queue_free() # This was temporary waypoint and will be deleted next frame.
 			if courier_arrived:
 				# Courier already waiting, go directly to entrance.
 				_switch_state(State.PICKING_UP)
@@ -125,10 +130,15 @@ func _do_after_delay() -> void:
 
 
 func _proceed_to_empty_garbage_slot() -> void:
-	pass
+	need_garbage_place.emit() # Request Garbage Manager to provide empty slot.
+
+# Called by Garbage Manager.
+func notify_garbage_slot(pos: Vector3) -> void:
+	var drop_point := WayPoint.make_drop_waypoint(pos, waypoint)
+	_switch_waypoint(drop_point)
 
 func _drop_garbage() -> void:
-	pass
+	drop_garbage.emit(waypoint.global_position) # Notify Garbage Manager that garbage was dropped.
 
 
 func _switch_waypoint(next_point:WayPoint) -> void:

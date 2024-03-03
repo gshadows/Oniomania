@@ -2,6 +2,8 @@ class_name WayPoint extends Marker3D
 
 signal arrived
 
+const DROP_POINT_WAIT_SEC := 0.5
+
 enum PointType {
 	# Intermediate points.
 	WALK, GARBAGE_INTERNAL,
@@ -29,3 +31,18 @@ func get_type_name() -> String:
 		PointType.SHOP: return "SHOP"
 		PointType.GARBAGE: return "GARBAGE"
 		_: return str(point_type)
+
+static func make_drop_waypoint(pos: Vector3, current: WayPoint) -> WayPoint:
+	var drop_point := WayPoint.new()
+	drop_point.point_type = WayPoint.PointType.GARBAGE_INTERNAL
+	drop_point.name = "_GarbageSlot_"
+	current.add_child(drop_point)
+	drop_point.global_position = pos
+	drop_point.wait_here_sec = DROP_POINT_WAIT_SEC
+	# Clone directions.
+	drop_point.to_computer = current.to_computer
+	drop_point.to_closet = current.to_closet
+	drop_point.to_entrance = current.to_entrance
+	drop_point.to_shop = current.to_shop
+	drop_point.to_garbage = current.to_garbage
+	return drop_point

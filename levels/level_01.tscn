@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpyue60272pci"]
+[gd_scene load_steps=13 format=3 uid="uid://dpyue60272pci"]
 
 [ext_resource type="Script" path="res://levels/game_manager.gd" id="1_5geff"]
 [ext_resource type="Script" path="res://levels/camera_control.gd" id="2_7h737"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://o1ovbiydb0xv" path="res://statics/floor.tscn" id="4_s67bf"]
 [ext_resource type="PackedScene" uid="uid://dlu6d8j35ia22" path="res://objects/player/player.tscn" id="5_0l803"]
 [ext_resource type="PackedScene" uid="uid://c86a6g31orvyx" path="res://levels/waypoint.tscn" id="6_5d2r2"]
+[ext_resource type="Script" path="res://levels/garbage_manager.gd" id="6_gcxo5"]
 [ext_resource type="PackedScene" uid="uid://dn7oqjnwknkvm" path="res://objects/wife/wife.tscn" id="6_v7ng2"]
+[ext_resource type="PackedScene" uid="uid://c0xnngr82espu" path="res://objects/package/garbage.tscn" id="7_dd4qp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6oqfo"]
 size = Vector3(6, 2, 0.2)
@@ -256,10 +258,10 @@ wait_here_sec = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.61368, 0, 0)
 point_type = 4
 to_computer = NodePath("../WP-RoomComp")
-to_closet = NodePath("../WP-RoomComp")
+to_closet = NodePath("../WP-RoomCloset")
 to_entrance = NodePath(".")
 to_shop = NodePath("../WP-EntranceI")
-to_garbage = NodePath("../WP-RoomComp")
+to_garbage = NodePath("../WP-RoomCenter")
 wait_here_sec = 1.0
 
 [node name="WP-EntranceI" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
@@ -302,7 +304,7 @@ to_garbage = NodePath("../WP-EntranceI")
 wait_here_sec = 2.0
 
 [node name="WP-RoadHI" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7941, 0, 0)
+transform = Transform3D(0.984821, 0.0582917, -0.163494, -0.0574567, 0.9983, 0.00983491, 0.163789, -0.000291763, 0.986495, 4.7941, 0, 0)
 to_computer = NodePath("../WP-EntranceI")
 to_closet = NodePath("../WP-EntranceI")
 to_entrance = NodePath("../WP-EntranceI")
@@ -326,21 +328,36 @@ to_entrance = NodePath("../WP-RoadSO")
 to_shop = NodePath("../WP-Shop")
 to_garbage = NodePath("../WP-RoadSO")
 
-[node name="WP-Shop" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_garbage") instance=ExtResource("6_5d2r2")]
+[node name="WP-Shop" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8561, 0, -1.41688)
 point_type = 5
-to_computer = NodePath("../WP-RoadHO")
-to_closet = NodePath("../WP-RoadHO")
-to_entrance = NodePath("../WP-RoadHO")
-to_garbage = NodePath("../WP-RoadHO")
+to_computer = NodePath("../WP-RoadSO")
+to_closet = NodePath("../WP-RoadSO")
+to_entrance = NodePath("../WP-RoadSO")
+to_shop = NodePath(".")
+to_garbage = NodePath("../WP-RoadSO")
 wait_here_sec = 5.0
+
+[node name="Garbage" type="Node" parent="." node_paths=PackedStringArray("min_point", "max_point", "wife")]
+script = ExtResource("6_gcxo5")
+min_point = NodePath("MinPoint")
+max_point = NodePath("MaxPoint")
+wife = NodePath("../Wife")
+garbage_scene = ExtResource("7_dd4qp")
+
+[node name="MinPoint" type="Marker3D" parent="Garbage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62587, 0, -2.58878)
+
+[node name="MaxPoint" type="Marker3D" parent="Garbage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.726935, 0, 2.63329)
 
 [node name="Player" parent="." instance=ExtResource("5_0l803")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50057, 0, 0)
 
 [node name="Wife" parent="." node_paths=PackedStringArray("waypoint") instance=ExtResource("6_v7ng2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6986, 0, 0)
-waypoint = NodePath("../WayPoints/WP-EntranceI")
+waypoint = NodePath("../WayPoints/WP-Garbage")
+state = 4
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.611527, -0.536576, 0.581482, 0, 0.734915, 0.67816, -0.791224, 0.414713, -0.44942, 0, 0, 0)
@@ -349,3 +366,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fbhdu")
+
+[connection signal="drop_garbage" from="Wife" to="Garbage" method="_on_wife_drop_garbage"]
+[connection signal="need_garbage_place" from="Wife" to="Garbage" method="_on_wife_need_garbage_place"]
