@@ -367,5 +367,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fbhdu")
 
+[connection signal="garbage_overflow" from="Garbage" to="." method="_on_garbage_garbage_overflow"]
 [connection signal="drop_garbage" from="Wife" to="Garbage" method="_on_wife_drop_garbage"]
 [connection signal="need_garbage_place" from="Wife" to="Garbage" method="_on_wife_need_garbage_place"]

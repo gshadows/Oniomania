@@ -16,4 +16,9 @@ func _ready() -> void:
 
 func set_difficulty_modifier(modifier: float) -> void:
 	wife.difficulty_modifier = modifier
+	player.difficulty_modifier = modifier
 	garbage_manager.difficulty_modifier = modifier
+
+
+func _on_garbage_garbage_overflow():
+	pass # Replace with function body.

@@ -19,7 +19,7 @@ enum State { SHOPPING, PICKING_UP, RECEIVING, STORING, LITTERING }
 @export var wait_time := GAME_START_WAIT_SEC
 
 var courier_arrived := false
-var difficulty_modifier := 5.0 # Updated by the GameManager
+var difficulty_modifier := 1.0 # Updated by the GameManager
 
 
 func _process(delta: float) -> void:
