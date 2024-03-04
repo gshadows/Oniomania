@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn7oqjnwknkvm"]
+[gd_scene load_steps=11 format=3 uid="uid://dn7oqjnwknkvm"]
 
 [ext_resource type="Script" path="res://objects/wife/wife.gd" id="1_nubjm"]
 
@@ -22,7 +22,13 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7o1k"]
 albedo_color = Color(0.152941, 0.152941, 0.152941, 1)
 
-[node name="Wife" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_akqlc"]
+size = Vector3(0.5, 1.7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw2d1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Wife" type="CharacterBody3D"]
 script = ExtResource("1_nubjm")
 
 [node name="MeshStand" type="MeshInstance3D" parent="."]
@@ -46,3 +52,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_itx2t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
 mesh = SubResource("BoxMesh_qj7gi")
 surface_material_override/0 = SubResource("StandardMaterial3D_y7o1k")
+
+[node name="CollisionWife" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("BoxShape3D_akqlc")
+
+[node name="CollisionGarbage" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_xw2d1")

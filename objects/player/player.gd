@@ -1,10 +1,15 @@
 class_name Player extends CharacterBody3D
 
-const WALK_SPEED := 2.0
+signal throw_garbage
+signal take_garbage(garbage:Garbage)
 
-@export var garbage_manager: GarbageManager
+const WALK_SPEED := 4.0
+
+@onready var raycast: RayCast3D = $RayCast3D
+@onready var mesh_garbage: MeshInstance3D = $MeshGargabe
 
 var difficulty_modifier := 1.0 # Updated by the GameManager
+var holding_trash := false
 
 
 func _ready():
@@ -30,4 +35,21 @@ func _do_walk() -> void:
 
 func _do_actions() -> void:
 	if Input.is_action_just_pressed("action"):
-		pass
+		if raycast.is_colliding():
+			var collider := raycast.get_collider()
+			if collider is TrashCan:
+				_drop_garbage()
+			elif collider is Garbage:
+				_take_garbage(collider)
+
+func _drop_garbage() -> void:
+	if not holding_trash: return
+	holding_trash = false
+	mesh_garbage.visible = false
+	throw_garbage.emit()
+
+func _take_garbage(garbage:Garbage) -> void:
+	if holding_trash: return
+	holding_trash = true
+	mesh_garbage.visible = true
+	take_garbage.emit(garbage)

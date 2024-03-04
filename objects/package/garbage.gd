@@ -1,0 +1,1 @@
+class_name Garbage extends StaticBody3D

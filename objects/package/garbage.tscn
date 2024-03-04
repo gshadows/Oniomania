@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0xnngr82espu"]
+[gd_scene load_steps=5 format=3 uid="uid://c0xnngr82espu"]
+
+[ext_resource type="Script" path="res://objects/package/garbage.gd" id="1_u4f1e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_va3xd"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -7,7 +9,18 @@ size = Vector3(0.5, 0.5, 0.5)
 albedo_color = Color(0.156863, 0.156863, 0.156863, 1)
 metallic_specular = 0.0
 
-[node name="Garbage" type="MeshInstance3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2746"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Garbage" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_u4f1e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_va3xd")
 surface_material_override/0 = SubResource("StandardMaterial3D_uqrkl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_p2746")

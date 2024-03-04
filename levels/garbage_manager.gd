@@ -111,7 +111,14 @@ func _on_wife_drop_garbage(pos: Vector3) -> void:
 
 func _drop_trash(pos: Vector3) -> Node3D:
 	var trash := garbage_scene.instantiate() as Node3D
-	trash.name = "Trash_01"
-	trash.position = pos
+	trash.name = "Trash"
+	trash.position = Vector3(pos.x + randf_range(-1, +1), pos.y, pos.z + randf_range(-1, +1))
 	add_child(trash)
 	return trash
+
+
+func _on_player_take_garbage(garbage:Garbage) -> void:
+	var slot_xz := point_to_slot_coords(garbage.global_position)
+	set_slot(slot_xz.x, slot_xz.y, null)
+	garbage.queue_free()
+	remove_child(garbage)
