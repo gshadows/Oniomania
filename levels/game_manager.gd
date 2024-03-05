@@ -3,24 +3,21 @@ class_name GameManager extends Node3D
 signal win
 signal loose
 
-@export var wife: Wife
-@export var player: Player
-#@export var neighboar: Neighboar
-@export var garbage_manager: GarbageManager
 @export_range(0.1, 20.0, 0.1) var difficulty_modifier := 1.0
 @export var difficulty_after := [ 5, 10, 15, 20, 25, 30, 40, 50 ]
+
+@onready var garbage_manager := $Garbage
+@onready var camera_control := $CameraControl
+@onready var wife: Wife = $Wife
+@onready var player: Player = $Player
+#@onready var neighboar: Neighboar = $Neighboar
 
 var garbage_cars := 0
 var garbage_collected := 0
 
 
-func _ready() -> void:
-	if OS.is_debug_build() and (DisplayServer.get_screen_count() > 1):
-		#DisplayServer.window_set_current_screen(DisplayServer.window_get_current_screen() ^ 1)
-		DisplayServer.window_set_current_screen(DisplayServer.get_screen_count() - 1)
-		#DisplayServer.window_set_current_screen(1)
-		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+func setup() -> void:
+	camera_control.setup()
 
 
 func set_difficulty_modifier(modifier: float) -> void:

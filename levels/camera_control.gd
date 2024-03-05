@@ -6,8 +6,8 @@ const FOLLOW_SPEED := 2.0
 @export var player: Player = null
 
 
-func setup(_player:Player) -> void:
-	player = _player
+func setup() -> void:
+	cam.current = true
 
 
 func _process(delta):

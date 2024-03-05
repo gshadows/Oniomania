@@ -26,11 +26,8 @@ ambient_light_energy = 4.13
 reflected_light_source = 1
 tonemap_exposure = 1.44
 
-[node name="Level01" type="Node3D" node_paths=PackedStringArray("wife", "player", "garbage_manager")]
+[node name="Level01" type="Node3D"]
 script = ExtResource("1_5geff")
-wife = NodePath("Wife")
-player = NodePath("Player")
-garbage_manager = NodePath("Garbage")
 
 [node name="CameraControl" type="Node3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 7, 3.515)
@@ -41,9 +38,12 @@ player = NodePath("../Player")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 current = true
 
-[node name="Statics" type="Node" parent="."]
+[node name="Statics" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="Ground" type="Node" parent="Statics"]
+[node name="Ground" type="Node3D" parent="Statics"]
+metadata/_edit_group_ = true
 
 [node name="Ground01" parent="Statics/Ground" instance=ExtResource("3_87ccb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
@@ -169,7 +169,8 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
 skeleton = NodePath("../../..")
 
-[node name="HouseFloor" type="Node" parent="Statics"]
+[node name="HouseFloor" type="Node3D" parent="Statics"]
+metadata/_edit_group_ = true
 
 [node name="Ground" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
 
@@ -197,7 +198,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 [node name="Ground9" parent="Statics/HouseFloor" instance=ExtResource("4_s67bf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
-[node name="House" type="Node" parent="Statics"]
+[node name="House" type="Node3D" parent="Statics"]
+metadata/_edit_group_ = true
 
 [node name="Wall1" type="MeshInstance3D" parent="Statics/House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
@@ -223,9 +225,10 @@ mesh = SubResource("BoxMesh_up5ll")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00441, 1, 1.84308)
 mesh = SubResource("BoxMesh_up5ll")
 
-[node name="Walls" type="Node" parent="Statics"]
+[node name="Walls" type="Node3D" parent="Statics"]
+metadata/_edit_group_ = true
 
-[node name="WayPoints" type="Node" parent="."]
+[node name="WayPoints" type="Node3D" parent="."]
 
 [node name="WP-RoomCenter" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85418, 0, 0)
@@ -345,7 +348,7 @@ to_shop = NodePath(".")
 to_garbage = NodePath("../WP-RoadSO")
 wait_here_sec = 5.0
 
-[node name="Garbage" type="Node" parent="." node_paths=PackedStringArray("min_point", "max_point", "wife")]
+[node name="Garbage" type="Node3D" parent="." node_paths=PackedStringArray("min_point", "max_point", "wife")]
 script = ExtResource("6_gcxo5")
 min_point = NodePath("MinPoint")
 max_point = NodePath("MaxPoint")
