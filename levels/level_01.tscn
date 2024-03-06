@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dpyue60272pci"]
+[gd_scene load_steps=15 format=3 uid="uid://dpyue60272pci"]
 
 [ext_resource type="Script" path="res://levels/game_manager.gd" id="1_5geff"]
 [ext_resource type="Script" path="res://levels/camera_control.gd" id="2_7h737"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dn7oqjnwknkvm" path="res://objects/wife/wife.tscn" id="6_v7ng2"]
 [ext_resource type="PackedScene" uid="uid://c0xnngr82espu" path="res://objects/package/garbage.tscn" id="7_dd4qp"]
 [ext_resource type="PackedScene" uid="uid://dfvrvyh8rh5gx" path="res://objects/trash_can/trash_can.tscn" id="10_dimyd"]
+[ext_resource type="PackedScene" uid="uid://fu0iejtb6ikd" path="res://ui/game_ui.tscn" id="11_vjeco"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6oqfo"]
 size = Vector3(6, 2, 0.2)
@@ -367,6 +368,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50057, 0, 0)
 [node name="Wife" parent="." node_paths=PackedStringArray("waypoint") instance=ExtResource("6_v7ng2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6986, 0, 0)
 waypoint = NodePath("../WayPoints/WP-EntranceI")
+state = 3
+wait_time = 0.0
 
 [node name="TrashCan" parent="." instance=ExtResource("10_dimyd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33862, 0, -2.31207)
@@ -379,8 +382,13 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fbhdu")
 
+[node name="GameUI" parent="." instance=ExtResource("11_vjeco")]
+
+[connection signal="before_end_game" from="." to="GameUI" method="_on_level_01_before_end_game"]
+[connection signal="new_level" from="." to="GameUI" method="_on_level_01_new_level"]
 [connection signal="garbage_overflow" from="Garbage" to="." method="_on_garbage_garbage_overflow"]
 [connection signal="take_garbage" from="Player" to="Garbage" method="_on_player_take_garbage"]
 [connection signal="throw_garbage" from="Player" to="." method="_on_player_throw_garbage"]
+[connection signal="throw_garbage" from="Player" to="GameUI" method="_on_player_throw_garbage"]
 [connection signal="drop_garbage" from="Wife" to="Garbage" method="_on_wife_drop_garbage"]
 [connection signal="need_garbage_place" from="Wife" to="Garbage" method="_on_wife_need_garbage_place"]

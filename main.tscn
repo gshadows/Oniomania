@@ -9,3 +9,6 @@ script = ExtResource("1_hkwwi")
 
 [node name="MenuNormal" parent="." instance=ExtResource("2_f83wr")]
 process_mode = 3
+
+[connection signal="play" from="MenuNormal" to="." method="_on_menu_normal_play"]
+[connection signal="quit" from="MenuNormal" to="." method="_on_menu_normal_quit"]
