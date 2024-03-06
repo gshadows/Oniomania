@@ -61,7 +61,7 @@ func _end_game(is_win: bool) -> void:
 	else:
 		Audio.loose()
 	before_end_game.emit(is_win)
-	get_tree().create_timer(END_GAME_DELAY_SEC)
+	await get_tree().create_timer(END_GAME_DELAY_SEC).timeout
 	if is_win:
 		win.emit()
 	else:
