@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkwnuh4kyb107"]
+
+[ext_resource type="PackedScene" uid="uid://dxifnloons2uq" path="res://models/phone.glb" id="1_pream"]
+[ext_resource type="Material" uid="uid://berhv3ibd3sr2" path="res://models/mat_phone.tres" id="2_lodaa"]
+[ext_resource type="PackedScene" uid="uid://da1ny5g1imbax" path="res://ui/menu.tscn" id="3_1kbin"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_im2on"]
+size = Vector2(0.297, 0.538)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lcd10"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhhxd"]
+resource_local_to_scene = true
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = SubResource("ViewportTexture_lcd10")
+metallic = 1.0
+roughness = 0.0
+
+[node name="Menu3D" instance=ExtResource("1_pream")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_lodaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0222315, 0.0158805)
+mesh = SubResource("PlaneMesh_im2on")
+surface_material_override/0 = SubResource("StandardMaterial3D_mhhxd")
+
+[node name="SubViewport" type="SubViewport" parent="." index="2"]
+disable_3d = true
+gui_embed_subwindows = true
+positional_shadow_atlas_size = 0
+size = Vector2i(330, 600)
+
+[node name="Menu" parent="SubViewport" index="0" instance=ExtResource("3_1kbin")]

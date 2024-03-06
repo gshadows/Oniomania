@@ -24,6 +24,11 @@ settings/stdout/verbose_stdout.debug=true
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
 [input]
 
 up={
@@ -66,6 +71,10 @@ action={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://config/translations.en.translation", "res://config/translations.ru.translation")
 
 [layer_names]
 

@@ -1,6 +1,6 @@
-extends Node3D
+extends Node
 
-@onready var level: GameManager = $Level01
+
 
 func _ready() -> void:
 	if OS.is_debug_build() and (DisplayServer.get_screen_count() > 1):
@@ -8,8 +8,7 @@ func _ready() -> void:
 		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
-
-func game_start():
-	level.visible = true
+#func game_start():
+	#level.visible = true
 	#menu.visible = false
-	level.setup()
+	#level.setup()
