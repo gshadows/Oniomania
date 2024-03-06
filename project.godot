@@ -18,6 +18,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://images/icon.svg"
 
+[autoload]
+
+Audio="*res://audio.tscn"
+
 [debug]
 
 settings/stdout/verbose_stdout.debug=true
