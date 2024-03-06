@@ -12,10 +12,6 @@ var difficulty_modifier := 1.0 # Updated by the GameManager
 var holding_trash := false
 
 
-func _ready():
-	pass
-
-
 func _process(_delta: float) -> void:
 	_do_walk()
 	_do_actions()
@@ -46,10 +42,12 @@ func _drop_garbage() -> void:
 	if not holding_trash: return
 	holding_trash = false
 	mesh_garbage.visible = false
+	Audio.trash_can()
 	throw_garbage.emit()
 
 func _take_garbage(garbage:Garbage) -> void:
 	if holding_trash: return
 	holding_trash = true
 	mesh_garbage.visible = true
+	Audio.take()
 	take_garbage.emit(garbage)

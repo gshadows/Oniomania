@@ -50,10 +50,16 @@ func _on_player_throw_garbage():
 			if difficulty_modifier <= 0:
 				_end_game(true)
 			else:
+				Audio.level_up()
 				new_level.emit(i + 2)
 
 
 func _end_game(is_win: bool) -> void:
+	Audio.stop_music()
+	if is_win:
+		Audio.win()
+	else:
+		Audio.loose()
 	before_end_game.emit(is_win)
 	get_tree().create_timer(END_GAME_DELAY_SEC)
 	if is_win:

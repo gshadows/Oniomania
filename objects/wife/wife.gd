@@ -48,6 +48,7 @@ func _do_waypoint_actions() -> void:
 	match waypoint.point_type:
 		WayPoint.PointType.COMPUTER:
 			# Arrived to computer - sit down for shopping.
+			Audio.computer()
 			mesh_stand.visible = false
 			mesh_sit.visible = true
 			# Select next action after online shopping.
@@ -61,6 +62,7 @@ func _do_waypoint_actions() -> void:
 				_switch_waypoint(waypoint.to_shop)
 		WayPoint.PointType.CLOSET:
 			# Arrived to closet. Stay some time with goods. Next will be garbage empty boxes.
+			Audio.put_goods()
 			_switch_state(State.LITTERING)
 			_switch_waypoint(waypoint.to_garbage)
 		WayPoint.PointType.GARBAGE:
@@ -81,6 +83,7 @@ func _do_waypoint_actions() -> void:
 				_switch_waypoint(waypoint.to_computer)
 		WayPoint.PointType.ENTRANCE:
 			# Arrived to entrance. We're here either passing through, or thi is our goal.
+			Audio.door()
 			if state == State.PICKING_UP:
 				# We're here to pick up delivery.
 				_switch_state(State.STORING)
@@ -89,6 +92,7 @@ func _do_waypoint_actions() -> void:
 				_pass_through()
 		WayPoint.PointType.SHOP:
 			# Arrived to shop and disappeared inside.
+			Audio.shop_enter()
 			mesh_stand.visible = false
 			_switch_state(State.STORING) # Next - store goods in closet.
 			_switch_waypoint(waypoint.to_closet)
@@ -111,6 +115,7 @@ func _pass_through() -> void:
 
 func _do_after_delay() -> void:
 	print_verbose("Wife: End wait at state ", stname(state))
+	look_at(waypoint.global_position)
 	match state:
 		State.RECEIVING, State.PICKING_UP:
 			# After computer - stand up.
@@ -120,13 +125,16 @@ func _do_after_delay() -> void:
 			# After storing.
 			mesh_goods.visible = false
 			mesh_garbage.visible = true
+			Audio.unpack()
 		State.SHOPPING:
 			# After throwing garbage (littering).
 			mesh_garbage.visible = false
+			Audio.drop()
 		State.STORING:
 			# After received goods in shop or from delivery.
 			mesh_goods.visible = true
 			mesh_stand.visible = true
+			Audio.shop_ok()
 
 
 func _proceed_to_empty_garbage_slot() -> void:
@@ -144,7 +152,8 @@ func _drop_garbage() -> void:
 func _switch_waypoint(next_point:WayPoint) -> void:
 	print_verbose("Wife: Path %s (%s) -> %s (%s)" % [waypoint.name, waypoint.get_type_name(), next_point.name, next_point.get_type_name()])
 	waypoint = next_point
-	look_at(waypoint.global_position)
+	if waypoint.wait_here_sec <= 0:
+		look_at(waypoint.global_position)
 
 func _switch_state(new_state:State) -> void:
 	print_verbose("Wife: ", stname(state), " -> ", stname(new_state))

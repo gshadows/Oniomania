@@ -8,8 +8,10 @@ func _ready() -> void:
 		DisplayServer.window_set_current_screen(DisplayServer.get_screen_count() - 1)
 		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	Audio.menu_music()
 
 func _on_menu_normal_quit() -> void:
+	Audio.stop_music()
 	get_tree().quit()
 
 func _unhandled_input(event:InputEvent) -> void:
@@ -24,11 +26,13 @@ func pause() -> void:
 	get_tree().paused = true
 	if level: level.visible = false
 	menu.visible = true
+	Audio.menu_music()
 
 func unpause() -> void:
 	menu.visible = false
 	if level: level.visible = true
 	get_tree().paused = false
+	Audio.game_music()
 
 func _on_menu_normal_play() -> void:
 	menu.visible = false
@@ -37,6 +41,7 @@ func _on_menu_normal_play() -> void:
 	else:
 		_load_game()
 	get_tree().paused = false
+	Audio.game_music()
 
 func _load_game() -> void:
 	level = preload("res://levels/level_01.tscn").instantiate()
