@@ -1,5 +1,8 @@
 extends TextureRect
 
+signal play
+signal quit
+
 @onready var AUDIO_BUS_MASTER = AudioServer.get_bus_index("Master")
 
 func _ready() -> void:
@@ -22,9 +25,20 @@ func _on_button_ru_toggled(toggled_on:bool) -> void:
 		%ButtonEN.button_pressed = false
 
 
-func _on_button_start_pressed():
-	pass # Replace with function body.
-
-
 func _on_sfx_volume_drag_ended(value_changed):
 	AudioServer.set_bus_volume_db(AUDIO_BUS_MASTER, linear_to_db(value_changed))
+
+
+func _on_button_start_pressed():
+	play.emit()
+
+func _on_button_quit_pressed():
+	quit.emit()
+
+func _on_button_info_pressed():
+	%Menu.visible = false
+	%Info.visible = true
+
+func _on_button_thanks_pressed():
+	%Menu.visible = true
+	%Info.visible = false

@@ -43,15 +43,16 @@ theme_override_constants/margin_top = 54
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 54
 
-[node name="VBoxContainerTop" type="VBoxContainer" parent="MarginContainer"]
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainerTop"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ButtonStart" type="Button" parent="MarginContainer/VBoxContainerTop/VBoxContainer"]
+[node name="ButtonStart" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.768627, 0, 1)
@@ -59,7 +60,7 @@ text = "PLAY"
 icon = ExtResource("1_lfddh")
 expand_icon = true
 
-[node name="ButtonSetup" type="Button" parent="MarginContainer/VBoxContainerTop/VBoxContainer"]
+[node name="ButtonSetup" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -68,7 +69,7 @@ text = "SETUP"
 icon = ExtResource("2_xsk8h")
 expand_icon = true
 
-[node name="ButtonInfo" type="Button" parent="MarginContainer/VBoxContainerTop/VBoxContainer"]
+[node name="ButtonInfo" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.768627, 0, 1)
@@ -76,7 +77,7 @@ text = "INFO"
 icon = ExtResource("3_qkxym")
 expand_icon = true
 
-[node name="ButtonQuit" type="Button" parent="MarginContainer/VBoxContainerTop/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0.768627, 0, 1)
@@ -84,17 +85,17 @@ text = "QUIT"
 icon = ExtResource("4_d8bva")
 expand_icon = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainerTop"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 10
 
-[node name="VolumeIcon" type="TextureRect" parent="MarginContainer/VBoxContainerTop/HBoxContainer"]
+[node name="VolumeIcon" type="TextureRect" parent="MarginContainer/Menu/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_jkmhf")
 expand_mode = 3
 
-[node name="SfxVolume" type="HSlider" parent="MarginContainer/VBoxContainerTop/HBoxContainer"]
+[node name="SfxVolume" type="HSlider" parent="MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -102,7 +103,7 @@ size_flags_vertical = 1
 max_value = 2.0
 step = 0.01
 
-[node name="ButtonEN" type="Button" parent="MarginContainer/VBoxContainerTop/HBoxContainer"]
+[node name="ButtonEN" type="Button" parent="MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -111,7 +112,7 @@ theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
 toggle_mode = true
 text = "EN"
 
-[node name="ButtonRU" type="Button" parent="MarginContainer/VBoxContainerTop/HBoxContainer"]
+[node name="ButtonRU" type="Button" parent="MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -120,8 +121,26 @@ theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
 toggle_mode = true
 text = "RU"
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainerTop/VBoxContainer/ButtonStart" to="." method="_on_button_start_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainerTop/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
-[connection signal="drag_ended" from="MarginContainer/VBoxContainerTop/HBoxContainer/SfxVolume" to="." method="_on_sfx_volume_drag_ended"]
-[connection signal="toggled" from="MarginContainer/VBoxContainerTop/HBoxContainer/ButtonEN" to="." method="_on_button_en_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainerTop/HBoxContainer/ButtonRU" to="." method="_on_button_ru_toggled"]
+[node name="Info" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "ABOUT"
+
+[node name="ButtonThanks" type="Button" parent="MarginContainer/Info"]
+layout_mode = 2
+text = "THANKS"
+
+[connection signal="mouse_entered" from="MarginContainer/Menu/VBoxContainer/ButtonStart" to="." method="_on_button_start_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonInfo" to="." method="_on_button_info_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="drag_ended" from="MarginContainer/Menu/HBoxContainer/SfxVolume" to="." method="_on_sfx_volume_drag_ended"]
+[connection signal="toggled" from="MarginContainer/Menu/HBoxContainer/ButtonEN" to="." method="_on_button_en_toggled"]
+[connection signal="toggled" from="MarginContainer/Menu/HBoxContainer/ButtonRU" to="." method="_on_button_ru_toggled"]
+[connection signal="pressed" from="MarginContainer/Info/ButtonThanks" to="." method="_on_button_thanks_pressed"]
