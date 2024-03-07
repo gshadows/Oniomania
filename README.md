@@ -3,7 +3,7 @@
 
 Download from Itch: https://gshadow.itch.io/oniomania
 
-![Oniomania cover image](docs/cover.jpg)
+![Oniomania cover image](docs/cover.png)
 
 **Software used:**
 * Godot 4.2
