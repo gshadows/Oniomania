@@ -57,7 +57,11 @@ func _end_game() -> void:
 func _on_level_win() -> void:
 	pause()
 	_end_game()
+	menu.visible = true
+	await menu.game_win_outro()
 
 func _on_level_loose() -> void:
 	pause()
 	_end_game()
+	menu.visible = true
+	await menu.game_loose_outro()

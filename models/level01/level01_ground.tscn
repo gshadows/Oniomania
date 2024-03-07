@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ysjc5pexabs"]
+
+[ext_resource type="PackedScene" uid="uid://baov65xqyrd7d" path="res://models/level01/level01_ground.glb" id="1_bhpdw"]
+[ext_resource type="Material" uid="uid://c6d2c7cgn7f0y" path="res://models/level01/mat_grass.tres" id="2_yg4my"]
+[ext_resource type="Material" uid="uid://ygy73qbed71h" path="res://models/level01/mat_road.tres" id="3_e4jsd"]
+
+[node name="level01_ground" instance=ExtResource("1_bhpdw")]
+
+[node name="GrassLeft" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yg4my")
+
+[node name="GrassRight" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_yg4my")
+
+[node name="Ground" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_yg4my")
+
+[node name="RoadLeft" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_e4jsd")
+
+[node name="RoadRight" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_e4jsd")

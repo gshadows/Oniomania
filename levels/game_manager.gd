@@ -66,3 +66,11 @@ func _end_game(is_win: bool) -> void:
 		win.emit()
 	else:
 		loose.emit()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if not event is InputEventKey: return
+	if event.physical_keycode == KEY_F12:
+		_end_game(true)
+	if event.physical_keycode == KEY_F11:
+		_end_game(false)

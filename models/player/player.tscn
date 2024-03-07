@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0s2grwugx7b7"]
+
+[ext_resource type="PackedScene" uid="uid://dkueccsak28p3" path="res://models/player/player.glb" id="1_34ljv"]
+[ext_resource type="Material" uid="uid://b28g8vivpiit5" path="res://models/mat_gradients.tres" id="2_21im6"]
+
+[node name="Player" instance=ExtResource("1_34ljv")]
+
+[node name="Man_A" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_21im6")

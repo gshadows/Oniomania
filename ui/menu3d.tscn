@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dkwnuh4kyb107"]
 
-[ext_resource type="PackedScene" uid="uid://dxifnloons2uq" path="res://models/phone.glb" id="1_pream"]
-[ext_resource type="Material" uid="uid://berhv3ibd3sr2" path="res://models/mat_phone.tres" id="2_lodaa"]
+[ext_resource type="PackedScene" uid="uid://dxifnloons2uq" path="res://models/phone/phone.glb" id="1_pream"]
+[ext_resource type="Material" uid="uid://berhv3ibd3sr2" path="res://models/phone/mat_phone.tres" id="2_lodaa"]
 [ext_resource type="PackedScene" uid="uid://da1ny5g1imbax" path="res://ui/menu.tscn" id="3_1kbin"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_im2on"]

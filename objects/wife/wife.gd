@@ -9,10 +9,10 @@ const GAME_START_WAIT_SEC := 1.0
 
 @export var waypoint: WayPoint
 
-@onready var mesh_stand: MeshInstance3D = $MeshStand
-@onready var mesh_sit: MeshInstance3D = $MeshSit
-@onready var mesh_goods: MeshInstance3D = $MeshGoods
-@onready var mesh_garbage: MeshInstance3D = $MeshGargabe
+@onready var mesh_stand: Node3D = $MeshStand
+@onready var mesh_sit: Node3D = $MeshSit
+@onready var mesh_goods: Node3D = $MeshGoods
+@onready var mesh_garbage: Node3D = $MeshGargabe
 
 enum State { SHOPPING, PICKING_UP, RECEIVING, STORING, LITTERING }
 @export var state := State.SHOPPING

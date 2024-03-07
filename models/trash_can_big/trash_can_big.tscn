@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hpcosafcxyok"]
+
+[ext_resource type="PackedScene" uid="uid://yj4orsngtrw3" path="res://models/trash_can_big/trash_can_big.glb" id="1_g6ggy"]
+[ext_resource type="Material" uid="uid://dti0rd62mexg2" path="res://models/trash_can_big/mat_trash_can_big.tres" id="2_dwhw3"]
+
+[node name="TrashCanBig" instance=ExtResource("1_g6ggy")]
+
+[node name="TrashCanBig" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_dwhw3")

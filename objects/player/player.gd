@@ -6,7 +6,7 @@ signal take_garbage(garbage:Garbage)
 const WALK_SPEED := 4.0
 
 @onready var raycast: RayCast3D = $RayCast3D
-@onready var mesh_garbage: MeshInstance3D = $MeshGargabe
+@onready var mesh_garbage: Node3D = $MeshGargabe
 
 var difficulty_modifier := 1.0 # Updated by the GameManager
 var holding_trash := false

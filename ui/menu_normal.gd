@@ -1,9 +1,12 @@
-extends TextureRect
+extends Control
 
 signal play
 signal quit
 
 @onready var AUDIO_BUS_MASTER = AudioServer.get_bus_index("Master")
+@onready var timer: Timer = %Timer
+
+var skip_dialog := false
 
 func _ready() -> void:
 	if TranslationServer.get_locale().to_lower().begins_with("ru"):
@@ -30,6 +33,7 @@ func _on_sfx_volume_drag_ended(value_changed):
 
 
 func _on_button_start_pressed():
+	await game_intro()
 	play.emit()
 
 func _on_button_quit_pressed():
@@ -42,3 +46,70 @@ func _on_button_info_pressed():
 func _on_button_thanks_pressed():
 	%Menu.visible = true
 	%Info.visible = false
+
+
+func delay(time: float) -> bool:
+	while not skip_dialog and (time > 0):
+		timer.start()
+		await timer.timeout
+		time -= timer.wait_time
+	return skip_dialog
+
+func _phone_on() -> void:
+	%MainMenu.visible = false
+	%PhoneOFF.visible = true
+	if await delay(1): return
+	%PhoneOFF.visible = false
+	%PhoneON.visible = true
+	if await delay(0.5): return
+
+func _phone_off() -> void:
+	%PhoneON.visible = false
+	%PhoneOFF.visible = true
+	if await delay(0.5): return
+
+func _play_dialog(root: Control) -> void:
+	root.get_node("PhoneMsg1").visible = false
+	root.get_node("PhoneMsg2").visible = false
+	root.get_node("PhoneMsg3").visible = false
+	root.get_node("PhoneMsg4").visible = false
+	root.visible = true
+	root.get_node("PhoneMsg1").visible = true
+	if await delay(2): return
+	root.get_node("PhoneMsg2").visible = true
+	if await delay(1): return
+	root.get_node("PhoneMsg3").visible = true
+	if await delay(1): return
+	root.get_node("PhoneMsg4").visible = true
+	if await delay(3): return
+
+func game_intro() -> void:
+	skip_dialog = false
+	await _phone_on()
+	if skip_dialog: return
+	await _play_dialog(%StartDialog)
+	if skip_dialog: return
+	%StartDialog.visible = false
+	await _phone_off()
+
+func game_win_outro() -> void:
+	skip_dialog = false
+	await _phone_on()
+	if skip_dialog: return
+	await _play_dialog(%WinDialog)
+	if skip_dialog: return
+	%WinDialog.visible = false
+	await _phone_off()
+
+func game_loose_outro() -> void:
+	skip_dialog = false
+	await _phone_on()
+	if skip_dialog: return
+	await _play_dialog(%LooseDialog)
+	if skip_dialog: return
+	%LooseDialog.visible = false
+	await _phone_off()
+
+
+func _on_button_skip_pressed():
+	skip_dialog = true

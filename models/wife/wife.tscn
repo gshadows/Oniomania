@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg2uy0k8qwvy3"]
+
+[ext_resource type="PackedScene" uid="uid://c2ff1xd6bqoo2" path="res://models/wife/wife.glb" id="1_w6pno"]
+[ext_resource type="Material" uid="uid://b28g8vivpiit5" path="res://models/mat_gradients.tres" id="2_b0xfx"]
+
+[node name="Wife" instance=ExtResource("1_w6pno")]
+
+[node name="Woman_A" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_b0xfx")

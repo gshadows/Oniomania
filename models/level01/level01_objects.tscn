@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://qqq8br2oghsg"]
+
+[ext_resource type="PackedScene" uid="uid://bmoc0pdkotvaw" path="res://models/level01/level01_objects.glb" id="1_m7w0k"]
+[ext_resource type="Material" uid="uid://djn43lexd3wpr" path="res://models/level01/mat_floor.tres" id="2_mlnsi"]
+[ext_resource type="Material" uid="uid://byw5f571lw7ye" path="res://models/level01/mat_walls.tres" id="2_xlrp8"]
+[ext_resource type="Material" uid="uid://ibmy7uxw6j71" path="res://models/level01/mat_fence.tres" id="4_nn7w0"]
+[ext_resource type="Material" uid="uid://wo3chcvhv1c5" path="res://models/level01/mat_computer.tres" id="4_qdfxx"]
+[ext_resource type="Material" uid="uid://guobdftuair1" path="res://models/level01/mat_sign.tres" id="4_xmowy"]
+[ext_resource type="Material" uid="uid://r7rxc5vm3ipk" path="res://models/level01/mat_closet.tres" id="5_mbctk"]
+[ext_resource type="Material" uid="uid://dc43f14kxl8cx" path="res://models/level01/mat_shop.tres" id="6_r7qe4"]
+
+[node name="level01_objects" instance=ExtResource("1_m7w0k")]
+
+[node name="Walls" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xlrp8")
+
+[node name="Floor" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_mlnsi")
+
+[node name="Computer" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_qdfxx")
+
+[node name="Closet" parent="." index="3"]
+surface_material_override/0 = ExtResource("5_mbctk")
+
+[node name="Shop" parent="." index="4"]
+surface_material_override/0 = ExtResource("6_r7qe4")
+
+[node name="ShopSign" parent="." index="5"]
+surface_material_override/0 = ExtResource("4_xmowy")
+
+[node name="Fence" parent="." index="6"]
+surface_material_override/0 = ExtResource("4_nn7w0")
+
+[node name="ShopName" type="Label3D" parent="." index="7"]
+transform = Transform3D(0.847391, 0, -0.53097, 0, 1, 0, 0.53097, 0, 0.847391, 9.53732, 2.04298, -4.90684)
+pixel_size = 0.01
+modulate = Color(0, 0.568627, 1, 1)
+text = "N3"
+font_size = 80
+
+[node name="ShopName2" type="Label3D" parent="." index="8"]
+transform = Transform3D(0.847391, 0, -0.53097, 0, 1, 0, 0.53097, 0, 0.847391, 9.53732, 1.40107, -4.90684)
+double_sided = false
+modulate = Color(0, 0.662745, 0.498039, 1)
+text = "DELIVERY"

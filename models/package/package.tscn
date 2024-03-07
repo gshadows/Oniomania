@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn3h7sg1re7ds"]
+
+[ext_resource type="PackedScene" uid="uid://hfggdfiaget5" path="res://models/package/package.glb" id="1_r25wy"]
+[ext_resource type="Material" uid="uid://bixddoxc0vyww" path="res://models/package/mat_package.tres" id="2_3os8b"]
+
+[node name="Package" instance=ExtResource("1_r25wy")]
+
+[node name="Package" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3os8b")

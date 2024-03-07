@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://xq02xjjmry5v"]
+[gd_scene load_steps=14 format=3 uid="uid://xq02xjjmry5v"]
 
 [ext_resource type="Script" path="res://ui/menu_normal.gd" id="1_jwqdc"]
 [ext_resource type="Texture2D" uid="uid://b3vntdktk25no" path="res://images/ico_play.png" id="1_lfddh"]
+[ext_resource type="Texture2D" uid="uid://bufu1q6xmdoeb" path="res://images/phone/phone_frame.png" id="2_1x4cg"]
+[ext_resource type="Texture2D" uid="uid://da2phnjdlhuie" path="res://images/phone/phone_bg_off.png" id="2_p84ot"]
 [ext_resource type="Texture2D" uid="uid://bnjpijj8ak46p" path="res://images/ico_setup.png" id="2_xsk8h"]
 [ext_resource type="Texture2D" uid="uid://3d2xt2ynmwbn" path="res://images/ico_info.png" id="3_qkxym"]
+[ext_resource type="Texture2D" uid="uid://cg6nxmy28r1xd" path="res://images/phone/phone_bg_on.png" id="3_y5mbv"]
 [ext_resource type="Texture2D" uid="uid://b3f44egm6kxn7" path="res://images/ico_quit.png" id="4_d8bva"]
+[ext_resource type="Texture2D" uid="uid://cnyoeccaabhno" path="res://images/phone/phone_msg_friend.png" id="4_tkdc2"]
+[ext_resource type="Texture2D" uid="uid://briorkq13etgc" path="res://images/phone/phone_msg_me.png" id="5_cmi7y"]
 [ext_resource type="Texture2D" uid="uid://dw2cp6g1oac72" path="res://images/ico_volume.png" id="6_jkmhf"]
 
 [sub_resource type="Gradient" id="Gradient_um8n7"]
@@ -16,7 +21,473 @@ gradient = SubResource("Gradient_um8n7")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[node name="MenuNormal" type="TextureRect"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jwqdc")
+
+[node name="PhoneOFF" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -306.0
+offset_right = 202.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p84ot")
+
+[node name="PhoneON" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -306.0
+offset_right = 202.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_y5mbv")
+
+[node name="StartDialog" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 423.0
+offset_top = 56.0
+offset_right = -391.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PhoneMsg1" type="TextureRect" parent="StartDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -255.0
+offset_right = 182.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StartDialog/PhoneMsg1"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Как жизнь, бро?"
+autowrap_mode = 3
+
+[node name="PhoneMsg2" type="TextureRect" parent="StartDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -172.0
+offset_right = 182.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StartDialog/PhoneMsg2"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 333.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Даже не спрашивай, утопаю в мусоре!"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="PhoneMsg3" type="TextureRect" parent="StartDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -68.0
+offset_right = 182.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StartDialog/PhoneMsg3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Что случилось?!"
+autowrap_mode = 3
+
+[node name="PhoneMsg4" type="TextureRect" parent="StartDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = 16.0
+offset_right = 182.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="StartDialog/PhoneMsg4"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 14.0
+offset_right = 333.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Жена открыла для себя онлайн-шоппинг. Скоро будет негде жить из-за пустых коробок!"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="ButtonSkip" type="Button" parent="StartDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = -281.0
+offset_right = 166.0
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85098, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "X"
+flat = true
+
+[node name="WinDialog" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 423.0
+offset_top = 56.0
+offset_right = -391.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PhoneMsg1" type="TextureRect" parent="WinDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -255.0
+offset_right = 182.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="WinDialog/PhoneMsg1"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Как жизнь, бро?"
+autowrap_mode = 3
+
+[node name="PhoneMsg2" type="TextureRect" parent="WinDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -172.0
+offset_right = 182.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="WinDialog/PhoneMsg2"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 333.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Отлично, чувак!"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="PhoneMsg3" type="TextureRect" parent="WinDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -68.0
+offset_right = 182.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="WinDialog/PhoneMsg3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Справился с мусором?"
+autowrap_mode = 3
+
+[node name="PhoneMsg4" type="TextureRect" parent="WinDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = 16.0
+offset_right = 182.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="WinDialog/PhoneMsg4"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 14.0
+offset_right = 333.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Думал, утону в коробках, но в конце концов онлайн-шоппинг жене приелся. Жду её новых хобби :)"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="ButtonSkip" type="Button" parent="WinDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = -281.0
+offset_right = 166.0
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85098, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "X"
+flat = true
+
+[node name="LooseDialog" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 423.0
+offset_top = 56.0
+offset_right = -391.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PhoneMsg1" type="TextureRect" parent="LooseDialog"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -255.0
+offset_right = 182.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LooseDialog/PhoneMsg1"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Как жизнь, бро?"
+autowrap_mode = 3
+
+[node name="PhoneMsg2" type="TextureRect" parent="LooseDialog"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -172.0
+offset_right = 182.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LooseDialog/PhoneMsg2"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 333.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Мне нужна твоя помощь! Не могу попасть домой!"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="PhoneMsg3" type="TextureRect" parent="LooseDialog"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -68.0
+offset_right = 182.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tkdc2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LooseDialog/PhoneMsg3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 15.0
+offset_right = 271.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Что случилось?!"
+autowrap_mode = 3
+
+[node name="PhoneMsg4" type="TextureRect" parent="LooseDialog"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = 16.0
+offset_right = 182.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cmi7y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="LooseDialog/PhoneMsg4"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 14.0
+offset_right = 333.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.164706, 0.164706, 0.164706, 1)
+text = "Мне больше не войти в дом, там одни пустые коробки! Можно пожить у тебя недельку?"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="ButtonSkip" type="Button" parent="LooseDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = -281.0
+offset_right = 166.0
+offset_bottom = -231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85098, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "X"
+flat = true
+
+[node name="MainMenu" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,9 +500,8 @@ offset_bottom = 249.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_6n6qn")
-script = ExtResource("1_jwqdc")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,16 +513,16 @@ theme_override_constants/margin_top = 54
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 54
 
-[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+[node name="Menu" type="VBoxContainer" parent="MainMenu/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/Menu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ButtonStart" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
+[node name="ButtonStart" type="Button" parent="MainMenu/MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.415686, 0.298039, 1, 1)
@@ -61,7 +531,7 @@ text = "PLAY"
 icon = ExtResource("1_lfddh")
 expand_icon = true
 
-[node name="ButtonSetup" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
+[node name="ButtonSetup" type="Button" parent="MainMenu/MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -71,7 +541,7 @@ text = "SETUP"
 icon = ExtResource("2_xsk8h")
 expand_icon = true
 
-[node name="ButtonInfo" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
+[node name="ButtonInfo" type="Button" parent="MainMenu/MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.415686, 0.298039, 1, 1)
@@ -80,7 +550,7 @@ text = "INFO"
 icon = ExtResource("3_qkxym")
 expand_icon = true
 
-[node name="ButtonQuit" type="Button" parent="MarginContainer/Menu/VBoxContainer"]
+[node name="ButtonQuit" type="Button" parent="MainMenu/MarginContainer/Menu/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.415686, 0.298039, 1, 1)
@@ -89,17 +559,17 @@ text = "QUIT"
 icon = ExtResource("4_d8bva")
 expand_icon = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/MarginContainer/Menu"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 10
 
-[node name="VolumeIcon" type="TextureRect" parent="MarginContainer/Menu/HBoxContainer"]
+[node name="VolumeIcon" type="TextureRect" parent="MainMenu/MarginContainer/Menu/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_jkmhf")
 expand_mode = 3
 
-[node name="SfxVolume" type="HSlider" parent="MarginContainer/Menu/HBoxContainer"]
+[node name="SfxVolume" type="HSlider" parent="MainMenu/MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -107,7 +577,7 @@ size_flags_vertical = 1
 max_value = 2.0
 step = 0.01
 
-[node name="ButtonEN" type="Button" parent="MarginContainer/Menu/HBoxContainer"]
+[node name="ButtonEN" type="Button" parent="MainMenu/MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -116,7 +586,7 @@ theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
 toggle_mode = true
 text = "EN"
 
-[node name="ButtonRU" type="Button" parent="MarginContainer/Menu/HBoxContainer"]
+[node name="ButtonRU" type="Button" parent="MainMenu/MarginContainer/Menu/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -125,26 +595,49 @@ theme_override_colors/font_hover_color = Color(0, 0.647059, 0, 1)
 toggle_mode = true
 text = "RU"
 
-[node name="Info" type="VBoxContainer" parent="MarginContainer"]
+[node name="Info" type="VBoxContainer" parent="MainMenu/MarginContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Info"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/MarginContainer/Info"]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "ABOUT"
 
-[node name="ButtonThanks" type="Button" parent="MarginContainer/Info"]
+[node name="ButtonThanks" type="Button" parent="MainMenu/MarginContainer/Info"]
 layout_mode = 2
 text = "THANKS"
 
-[connection signal="mouse_entered" from="MarginContainer/Menu/VBoxContainer/ButtonStart" to="." method="_on_button_start_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonInfo" to="." method="_on_button_info_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="drag_ended" from="MarginContainer/Menu/HBoxContainer/SfxVolume" to="." method="_on_sfx_volume_drag_ended"]
-[connection signal="toggled" from="MarginContainer/Menu/HBoxContainer/ButtonEN" to="." method="_on_button_en_toggled"]
-[connection signal="toggled" from="MarginContainer/Menu/HBoxContainer/ButtonRU" to="." method="_on_button_ru_toggled"]
-[connection signal="pressed" from="MarginContainer/Info/ButtonThanks" to="." method="_on_button_thanks_pressed"]
+[node name="PhoneFrame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -306.0
+offset_right = 202.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_1x4cg")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
+[connection signal="pressed" from="StartDialog/ButtonSkip" to="." method="_on_button_skip_pressed"]
+[connection signal="pressed" from="WinDialog/ButtonSkip" to="." method="_on_button_skip_pressed"]
+[connection signal="pressed" from="LooseDialog/ButtonSkip" to="." method="_on_button_skip_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Menu/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Menu/VBoxContainer/ButtonInfo" to="." method="_on_button_info_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Menu/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="drag_ended" from="MainMenu/MarginContainer/Menu/HBoxContainer/SfxVolume" to="." method="_on_sfx_volume_drag_ended"]
+[connection signal="toggled" from="MainMenu/MarginContainer/Menu/HBoxContainer/ButtonEN" to="." method="_on_button_en_toggled"]
+[connection signal="toggled" from="MainMenu/MarginContainer/Menu/HBoxContainer/ButtonRU" to="." method="_on_button_ru_toggled"]
+[connection signal="pressed" from="MainMenu/MarginContainer/Info/ButtonThanks" to="." method="_on_button_thanks_pressed"]

@@ -1,43 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlu6d8j35ia22"]
+[gd_scene load_steps=5 format=3 uid="uid://dlu6d8j35ia22"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_30k1t"]
+[ext_resource type="PackedScene" uid="uid://c0s2grwugx7b7" path="res://models/player/player.tscn" id="2_htlyg"]
+[ext_resource type="PackedScene" uid="uid://bljwaavm8wuyu" path="res://models/trash/trash.tscn" id="2_j85sl"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_rytkx"]
-size = Vector3(0.5, 1.7, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlhih"]
-albedo_color = Color(0, 0.309804, 1, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yroc6"]
-points = PackedVector3Array(-0.25, -0.85, -0.25, -0.25, -0.85, 0.25, -0.25, 0.85, -0.25, 0.25, -0.85, -0.25, 0.25, -0.85, 0.25, -0.25, 0.85, 0.25, 0.25, 0.85, -0.25, 0.25, 0.85, 0.25)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pslfw"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0w5b"]
-albedo_color = Color(0.152941, 0.152941, 0.152941, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_071g4"]
+height = 1.7
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_30k1t")
 
-[node name="MeshPlayer" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
-mesh = SubResource("BoxMesh_rytkx")
-surface_material_override/0 = SubResource("StandardMaterial3D_hlhih")
+[node name="Player" parent="." instance=ExtResource("2_htlyg")]
+transform = Transform3D(-1.151e-08, 0, -0.263319, 0, 0.263319, 0, 0.263319, 0, -1.151e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
-shape = SubResource("ConvexPolygonShape3D_yroc6")
+shape = SubResource("CapsuleShape3D_071g4")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.372077, 0)
 target_position = Vector3(0, 0, -1)
 collision_mask = 6
 
-[node name="MeshGargabe" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+[node name="MeshGargabe" parent="." instance=ExtResource("2_j85sl")]
+transform = Transform3D(0.320865, 0, 0, 0, 0.320865, 0, 0, 0, 0.320865, 0, 0.75, -0.5)
 visible = false
-mesh = SubResource("BoxMesh_pslfw")
-surface_material_override/0 = SubResource("StandardMaterial3D_w0w5b")

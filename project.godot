@@ -34,7 +34,6 @@ version_control/autoload_on_startup=true
 [filesystem]
 
 import/blender/enabled=false
-import/fbx/enabled=false
 
 [input]
 
