@@ -53,6 +53,7 @@ func _load_game() -> void:
 func _end_game() -> void:
 	level.queue_free()
 	remove_child(level)
+	level = null
 
 func _on_level_win() -> void:
 	pause()

@@ -24,6 +24,7 @@ var was_in_shop := false
 
 
 func _process(delta: float) -> void:
+	if difficulty_modifier <= 0: return
 	if wait_time > 0:
 		wait_time -= delta
 		if wait_time <= 0:

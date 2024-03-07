@@ -69,6 +69,9 @@ func _phone_off() -> void:
 	if await delay(0.5): return
 	%MainMenu.visible = true
 	%PhoneOFF.visible = false
+	%StartDialog.visible = false
+	%WinDialog.visible = false
+	%LooseDialog.visible = false
 
 func _play_dialog(root: Control) -> void:
 	root.get_node("PhoneMsg1").visible = false
@@ -118,3 +121,9 @@ func game_loose_outro() -> void:
 
 func _on_button_skip_pressed():
 	skip_dialog = true
+	%PhoneON.visible = false
+	%PhoneOFF.visible = false
+	%MainMenu.visible = true
+	%StartDialog.visible = false
+	%WinDialog.visible = false
+	%LooseDialog.visible = false
