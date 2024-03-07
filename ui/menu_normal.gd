@@ -67,6 +67,8 @@ func _phone_off() -> void:
 	%PhoneON.visible = false
 	%PhoneOFF.visible = true
 	if await delay(0.5): return
+	%MainMenu.visible = true
+	%PhoneOFF.visible = false
 
 func _play_dialog(root: Control) -> void:
 	root.get_node("PhoneMsg1").visible = false
@@ -75,15 +77,18 @@ func _play_dialog(root: Control) -> void:
 	root.get_node("PhoneMsg4").visible = false
 	root.visible = true
 	root.get_node("PhoneMsg1").visible = true
+	Audio.new_message()
 	if await delay(2): return
 	root.get_node("PhoneMsg2").visible = true
-	if await delay(1): return
+	if await delay(2): return
 	root.get_node("PhoneMsg3").visible = true
-	if await delay(1): return
+	Audio.new_message()
+	if await delay(2): return
 	root.get_node("PhoneMsg4").visible = true
-	if await delay(3): return
+	if await delay(5): return
 
 func game_intro() -> void:
+	Audio.stop_music()
 	skip_dialog = false
 	await _phone_on()
 	if skip_dialog: return

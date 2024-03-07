@@ -47,6 +47,14 @@ to_entrance = NodePath("../WP-EntranceO")
 to_shop = NodePath("../WP-EntranceO")
 to_garbage = NodePath("../WP-Garbage")
 
+[node name="WP-RoomRet" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85418, 0, 0)
+to_computer = NodePath("../WP-RoomCenter")
+to_closet = NodePath("../WP-RoomCenter")
+to_entrance = NodePath("../WP-RoomCenter")
+to_shop = NodePath("../WP-RoomCenter")
+to_garbage = NodePath("../WP-Garbage")
+
 [node name="WP-RoomComp" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59443, 0, -1.4447)
 to_computer = NodePath("../WP-Computer")
@@ -66,10 +74,10 @@ to_garbage = NodePath("../WP-Garbage")
 [node name="WP-Garbage" parent="WayPoints" node_paths=PackedStringArray("to_computer", "to_closet", "to_entrance", "to_shop", "to_garbage") instance=ExtResource("6_5d2r2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769613, 0, 0)
 point_type = 6
-to_computer = NodePath("../WP-Computer")
-to_closet = NodePath("../WP-Closet")
-to_entrance = NodePath("../WP-EntranceO")
-to_shop = NodePath("../WP-EntranceO")
+to_computer = NodePath("../WP-RoomRet")
+to_closet = NodePath("../WP-RoomRet")
+to_entrance = NodePath("../WP-RoomRet")
+to_shop = NodePath("../WP-RoomRet")
 to_garbage = NodePath(".")
 wait_here_sec = 1.0
 

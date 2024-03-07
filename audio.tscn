@@ -1,9 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdqmi0u3h5glj"]
+[gd_scene load_steps=15 format=3 uid="uid://bdqmi0u3h5glj"]
 
 [ext_resource type="Script" path="res://audio.gd" id="1_fa2yj"]
+[ext_resource type="AudioStream" uid="uid://d0bl0krhtet5k" path="res://audio/383979__chrisreierson__frozen-wind-chime-ding.wav" id="2_c41qf"]
+[ext_resource type="AudioStream" uid="uid://dgcgmpaox3by7" path="res://audio/270545__littlerobotsoundfactory__jingle_win_01.wav" id="2_dsgos"]
+[ext_resource type="AudioStream" uid="uid://buiqcp05q8twy" path="res://audio/410574__yummie__game-background-music-loop-short.mp3" id="2_e18st"]
+[ext_resource type="AudioStream" uid="uid://dyyw3tjl2f5wi" path="res://audio/391536__unlistenable__electro-loose-sound.wav" id="3_o144i"]
+[ext_resource type="AudioStream" uid="uid://cbydtjhkdevcx" path="res://audio/442943__qubodup__level-up.wav" id="4_817tl"]
+[ext_resource type="AudioStream" uid="uid://do0envow6adbt" path="res://audio/326351__pfranzen__bundle-falling-to-ground.ogg" id="5_opotf"]
+[ext_resource type="AudioStream" uid="uid://bsqtdxsvf27f5" path="res://audio/126490__ayavaron__key_drop-02.wav" id="6_x1obg"]
+[ext_resource type="AudioStream" uid="uid://blqjobngp7x33" path="res://audio/435608__theknave__taking-bill-from-stack-5.wav" id="7_er0tq"]
+[ext_resource type="AudioStream" uid="uid://eqof6aijrrir" path="res://audio/498434__nestra__trash-can-falling.wav" id="8_tee7p"]
+[ext_resource type="AudioStream" uid="uid://b45hlvf0aajkg" path="res://audio/641060__deleted_user_14127626__typing2.ogg" id="9_hwbgs"]
+[ext_resource type="AudioStream" uid="uid://4xuk8j1s8xkf" path="res://audio/700684__mathewhenry__metal-door-squeaking-15-medium.wav" id="10_bq0bc"]
+[ext_resource type="AudioStream" uid="uid://3lh0d718v7x4" path="res://audio/57743__3bagbrew__shop_door_bell.wav" id="11_cno7k"]
+[ext_resource type="AudioStream" uid="uid://dyrhswaxnukel" path="res://audio/320152__owlstorm__pill-bottle.wav" id="12_qamrc"]
 
 [node name="Audio" type="Node"]
 script = ExtResource("1_fa2yj")
+_menu_music = ExtResource("2_e18st")
+_sfx_win = ExtResource("2_dsgos")
+_sfx_loose = ExtResource("3_o144i")
+_sfx_level_up = ExtResource("4_817tl")
+_sfx_unpack = ExtResource("5_opotf")
+_sfx_drop = ExtResource("6_x1obg")
+_sfx_take = ExtResource("7_er0tq")
+_sfx_trash_can = ExtResource("8_tee7p")
+_sfx_computer = ExtResource("9_hwbgs")
+_sfx_door = ExtResource("10_bq0bc")
+_shop_enter = ExtResource("11_cno7k")
+_shop_ok = ExtResource("11_cno7k")
+_put_goods = ExtResource("12_qamrc")
+_new_message = ExtResource("2_c41qf")
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 

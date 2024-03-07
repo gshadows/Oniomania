@@ -20,6 +20,7 @@ enum State { SHOPPING, PICKING_UP, RECEIVING, STORING, LITTERING }
 
 var courier_arrived := false
 var difficulty_modifier := 1.0 # Updated by the GameManager
+var was_in_shop := false
 
 
 func _process(delta: float) -> void:
@@ -92,6 +93,7 @@ func _do_waypoint_actions() -> void:
 				_pass_through()
 		WayPoint.PointType.SHOP:
 			# Arrived to shop and disappeared inside.
+			was_in_shop = true
 			Audio.shop_enter()
 			mesh_stand.visible = false
 			_switch_state(State.STORING) # Next - store goods in closet.
@@ -134,7 +136,9 @@ func _do_after_delay() -> void:
 			# After received goods in shop or from delivery.
 			mesh_goods.visible = true
 			mesh_stand.visible = true
-			Audio.shop_ok()
+			if was_in_shop:
+				was_in_shop = false
+				Audio.shop_ok()
 
 
 func _proceed_to_empty_garbage_slot() -> void:

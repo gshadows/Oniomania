@@ -15,6 +15,7 @@ extends Node
 @export var _shop_enter: AudioStream
 @export var _shop_ok: AudioStream
 @export var _put_goods: AudioStream
+@export var _new_message: AudioStream
 # DLC: Garbage Car
 #@export var _sfx_call_utility: AudioStream
 #@export var _sfx_car_stop: AudioStream
@@ -48,7 +49,6 @@ func game_music() -> void:
 
 func _sfx(stream:AudioStream) -> void:
 	if stream == null: return
-	await _snd.finished
 	_snd.stream = stream
 	_snd.play()
 
@@ -64,6 +64,7 @@ func door() -> void:		_sfx(_sfx_door)
 func shop_enter() -> void:	_sfx(_shop_enter)
 func shop_ok() -> void:		_sfx(_shop_ok)
 func put_goods() -> void:	_sfx(_put_goods)
+func new_message() -> void:	_sfx(_new_message)
 
 # DLC: Garbage Car
 #func call_utility() -> void:

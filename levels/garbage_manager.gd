@@ -33,10 +33,16 @@ func _ready() -> void:
 
 
 func get_slot(x: int, z: int) -> Node3D:
-	return slots[z * count_x + x]
+	var idx := z * count_x + x
+	if idx < slots.size():
+		return slots[idx]
+	else:
+		return null
 
 func set_slot(x: int, z: int, trash: Node3D) -> void:
-	slots[z * count_x + x] = trash
+	var idx := z * count_x + x
+	if idx < slots.size():
+		slots[idx] = trash
 
 func point_to_slot_coords(pos: Vector3) -> Vector2i:
 	var min_gp := min_point.global_position
