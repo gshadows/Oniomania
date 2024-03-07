@@ -9,8 +9,10 @@ export.cfg
 # Still need some way to automate re-install required addons after fresh clone.
 addons/
 
-# Output directory.
+# Output and temporary directories.
 _export
+_releases
+_tmp
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -35,3 +37,6 @@ mono_crash.*.json
 
 # Local reference files from internet, that should not be stored in Git.
 docs/info
+
+# Game settings when saved to current folder.
+settings.json
